@@ -2,15 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
+import { HeaderComponent } from './header/header.component';
+// NgModule ==> es6 modules
+// declarations ===> let/const
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [ // Pipe/Directives
+    AppComponent,
+    HeaderComponent
   ],
-  imports: [
+  imports: [ // NgModule
     BrowserModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
