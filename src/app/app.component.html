@@ -1,4 +1,10 @@
 <app-header
   [myTitle]="courseTitle"
-  (toggle)="onSideNavToggle($event)"
+  [drawer]="drawer"
+  [(size)]="count"
 ></app-header>
+<app-sidenav (setSidenavControl)="setSidenav($event)">
+  <ng-template #contentTpl>
+    <h3>main content {{count}}</h3>
+  </ng-template>
+</app-sidenav>

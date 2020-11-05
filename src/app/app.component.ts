@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -7,26 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public courseTitle = 'Angular Course';
-  // private salary = 4000;
-  //
-  // public imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png';
-  //
-  // public size = 50;
-  //
-  // public tag = this.domSanitizer.bypassSecurityTrustHtml('<span style="color: red">Some Tag text</span>');
-  //
-  // public user = {name: 'Ihor'};
-  //
+  public drawer!: MatDrawer;
+  public count: number = 0;
+
+
   // constructor(
-  //   private readonly domSanitizer: DomSanitizer
+  //   private cdr: ChangeDetectorRef
   // ) {
   // }
-  //
-  // public getSalary(): number {
-  //   return this.salary * 1.2;
-  // }
 
-  public onSideNavToggle(event: any): void {
-    console.log('LOG!!!', event);
+  public setSidenav(drawer: MatDrawer): void {
+    // Promise.resolve().then(() => {
+    //   this.drawer = drawer;
+    // });
+    this.drawer = drawer;
+    // this.cdr.detectChanges();
   }
 }
+
+
+// ----AA----AA-----AA

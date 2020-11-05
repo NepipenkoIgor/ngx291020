@@ -3,16 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-// NgModule ==> es6 modules
-// declarations ===> let/const
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
+
 @NgModule({
-  declarations: [ // Pipe/Directives
+  declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidenavComponent
   ],
-  imports: [ // NgModule
-    BrowserModule
+  imports: [
+    BrowserModule, BrowserAnimationsModule,
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+// TODO mat error with IVY
