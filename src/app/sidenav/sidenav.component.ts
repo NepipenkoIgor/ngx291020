@@ -32,18 +32,15 @@ export class SidenavComponent implements OnInit, AfterViewInit, AfterContentInit
   public setSidenavControl: EventEmitter<MatDrawer> = new EventEmitter<MatDrawer>(true);
 
   ngOnInit(): void {
-    console.log(this.container);
-    console.log(this.contentTpl);
     this.setSidenavControl.emit(this.drawer);
   }
 
   public ngAfterViewInit(): void {
-    console.log(this.container);
     this.container.createEmbeddedView(this.contentTpl);
   }
 
   public ngAfterContentInit(): void {
-    console.log(this.contentTpl);
+
   }
 
 }

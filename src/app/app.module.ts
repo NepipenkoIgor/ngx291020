@@ -8,6 +8,10 @@ import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsFilterPipe } from './products-filter.pipe';
+import { OnPushComponent } from './header/on-push/on-push.component';
+import { ExchangeRatesComponent } from './header/exchange-rates/exchange-rates.component';
+import { ExchangeRateDirective } from './header/exchange-rates/exchange-rate.directive';
+import { HiddenDirective } from './header/exchange-rates/hidden.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { ProductsFilterPipe } from './products-filter.pipe';
     HeaderComponent,
     SidenavComponent,
     ProductCardComponent,
-    ProductsFilterPipe
+    ProductsFilterPipe,
+    OnPushComponent,
+    ExchangeRatesComponent,
+    ExchangeRateDirective,
+    HiddenDirective
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

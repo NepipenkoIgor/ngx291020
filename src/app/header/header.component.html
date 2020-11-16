@@ -4,9 +4,13 @@
             mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
+    <!--    <span>{{getDate()}}</span>-->
+    <!--    <span>{{title?.text}}</span>-->
+    <!--    <app-on-push></app-on-push>-->
     <span>{{title}}</span>
   </div>
-  <div>
+  <div fxLayout="row">
+    <app-exchange-rates></app-exchange-rates>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>share</mat-icon>
     </button>

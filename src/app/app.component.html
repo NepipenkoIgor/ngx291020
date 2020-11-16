@@ -1,5 +1,5 @@
 <app-header
-  [myTitle]="courseTitle"
+  [myTitle]="courseTitle.text"
   [drawer]="drawer"
 ></app-header>
 <app-sidenav (setSidenavControl)="setSidenav($event)">
@@ -9,8 +9,9 @@
       <input matInput placeholder="Placeholder" (input)="search($event)">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
+    <mat-checkbox (change)="toggleOnlyFavorites($event)">Only Favorites</mat-checkbox>
     <mat-grid-list cols="4" rowHeight="500" *ngIf="products$ | async as products; else loadingContainer">
-      <mat-grid-tile *ngFor="let product of products | productsFilter:searchText; let isOdd = odd">
+      <mat-grid-tile *ngFor="let product of products | productsFilter:searchText:onlyFavorites; let isOdd = odd">
         <app-product-card [product]="product" [isOdd]="isOdd"></app-product-card>
       </mat-grid-tile>
     </mat-grid-list>
