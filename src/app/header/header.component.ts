@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
     if (!value) {
       return;
     }
-    console.log('[setter]', value);
     this.title = value;
   };
 
@@ -27,48 +26,11 @@ export class HeaderComponent implements OnInit {
   public drawer!: MatDrawer;
   public title!: string;
 
-  // @Input()
-  // title: any;
-  //
-  // constructor(
-  //   private cdr: ChangeDetectorRef,
-  //   private ngZone: NgZone
-  // ) {
-  //
-  // }
-
   public ngOnInit(): void {
-    // this.cdr.detach();
-    //
-    // vk.getUser((user) => {
-    //   this.ngZone.run(() => {
-    //     console.log(user)
-    //     this.user = user;
-    //   });
-    //   this.ngZone.runOutsideAngular(()=>{
-    //     // some calc;
-    //   })
-    // });
-
-    // setTimeout(() => {
-    //   this.cdr.reattach();
-    // }, 14000);
   }
-
-  // getDate(): number {
-  //   return Date.now();
-  // }
 
   toggleSideNav(): void {
     this.drawer.toggle();
   }
-
-  // public ngDoCheck(): void {
-  //   console.log('In Header');
-  // }
-  //
-  // public ngOnChanges(changes: SimpleChanges): void {
-  //   console.log(changes);
-  // }
 
 }

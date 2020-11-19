@@ -11,7 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { ProductsService } from '../products.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+    HttpClientModule,
+  ],
+  providers: [
+    ProductsService
+    // {
+    //   provide: ProductsService,
+    //   useClass: ProductsService
+    // }
+  ],
 })
-export class SharedModule { }
+export class SharedModule {
+}

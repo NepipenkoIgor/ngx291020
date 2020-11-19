@@ -21,7 +21,7 @@ export class ExchangeRateDirective implements OnInit {
 
   public context: any = null;
   private index: number = 0;
-  private intrvalId!: number;
+  private intervalId!: number;
 
   public constructor(
     private tpl: TemplateRef<any>,
@@ -68,16 +68,15 @@ export class ExchangeRateDirective implements OnInit {
   }
 
   private initInterval(): this {
-    this.intrvalId = setInterval(() => {
-      console.log(this);
+    this.intervalId = setInterval(() => {
       this.next();
     }, this.ms);
     return this;
   }
 
   private clearInterval(): this {
-    if (this.intrvalId) {
-      clearInterval(this.intrvalId);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
     return this;
   }

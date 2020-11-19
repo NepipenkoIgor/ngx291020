@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { IProduct, products$ } from './data';
 import { Observable } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
+import { IProduct, ProductsService } from './products.service';
 
 
 class Title {
@@ -18,32 +18,18 @@ class Title {
 export class AppComponent implements OnInit {
   public courseTitle = new Title('Angular Course');
   public drawer!: MatDrawer;
-  public products$!: Observable<IProduct[]>;
+  public products$: Observable<IProduct[]> = this.productsService.getProducts();
   public searchText: string = '';
   public onlyFavorites = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
-    // private appRef: ApplicationRef,
+    private productsService: ProductsService
   ) {
-
   }
 
   public ngOnInit(): void {
-    this.products$ = products$;
     this.cdr.detectChanges();
-
-
-    setTimeout(() => {
-      console.log('check');
-      this.courseTitle = new Title('RXJS');
-      // this.appRef.tick();
-    }, 7000);
-    // this.products$
-    //   .subscribe((products) => {
-    //     console.log(products);
-    //     this.products = products;
-    //   });
   }
 
   public setSidenav(drawer: MatDrawer): void {
@@ -55,7 +41,6 @@ export class AppComponent implements OnInit {
   }
 
   public filteredProducts(products: IProduct[], text: string): IProduct[] {
-    console.log('in function');
     if (!text) {
       return products;
     }
