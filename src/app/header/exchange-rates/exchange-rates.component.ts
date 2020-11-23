@@ -13,7 +13,7 @@ export class ExchangeRatesComponent implements OnInit {
     {value: 0.35, currency: 'RUB'},
   ];
 
-  public playMode = 'on';
+  public playMode: 'on' | 'off' = 'on';
   public ms = 3000;
 
   constructor() {

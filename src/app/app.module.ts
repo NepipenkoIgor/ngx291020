@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 import { BASE_URL } from './config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
-import { ProductsService } from './products.service';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { ProductsService } from './products.service';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ModalModule.forRoot()
   ],
   providers: [
     {
@@ -61,6 +62,7 @@ import { ProductsService } from './products.service';
       multi: true
     }
   ],
+  // entryComponents: [ConfirmProductComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
