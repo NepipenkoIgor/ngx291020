@@ -1,14 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
-import { Observable } from 'rxjs';
-import { MatCheckboxChange } from '@angular/material/checkbox/checkbox';
-import { IProduct, ProductsService } from './products.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-
-class Title {
-  constructor(public text: string) {
-  }
-}
+// import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,41 +9,19 @@ class Title {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  public courseTitle = new Title('Angular Course');
-  public drawer!: MatDrawer;
-  public products$: Observable<IProduct[]> = this.productsService.getProducts();
-  public searchText: string = '';
-  public onlyFavorites = false;
-
   constructor(
-    private cdr: ChangeDetectorRef,
-    private productsService: ProductsService
+    private router: Router,
   ) {
   }
 
   public ngOnInit(): void {
-    this.cdr.detectChanges();
-  }
-
-  public setSidenav(drawer: MatDrawer): void {
-    this.drawer = drawer;
-  }
-
-  public search(event: Event): void {
-    this.searchText = (event.target as HTMLInputElement).value;
-  }
-
-  public filteredProducts(products: IProduct[], text: string): IProduct[] {
-    if (!text) {
-      return products;
-    }
-    return products.filter((product: IProduct) => {
-      return `${product.title} ${product.price}`.toLowerCase().includes(text.toLowerCase());
-    });
-  }
-
-  public toggleOnlyFavorites({checked}: MatCheckboxChange): void {
-    this.onlyFavorites = checked;
+    this.router.events
+      .pipe(
+        // filter((event) => event instanceof NavigationStart && event.id === 1)
+      )
+      .subscribe((event) => {
+        console.log(event);
+      });
   }
 }
 

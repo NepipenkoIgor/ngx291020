@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct, ProductsService } from '../products.service';
-import { ModalService } from '../modal/modal.service';
+import { ModalService } from '../../../../../modal/modal.service';
 
 @Component({
   selector: 'app-product-card',

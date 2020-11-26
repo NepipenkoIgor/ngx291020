@@ -1,34 +1,3 @@
-<app-header
-  [myTitle]="courseTitle.text"
-  [drawer]="drawer"
-></app-header>
-<app-sidenav (setSidenavControl)="setSidenav($event)">
-  <ng-template #contentTpl>
-    <mat-form-field appearance="legacy">
-      <mat-label>Search by products</mat-label>
-      <input matInput placeholder="Placeholder" (input)="search($event)">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-    <mat-checkbox (change)="toggleOnlyFavorites($event)">Only Favorites</mat-checkbox>
-    <mat-grid-list cols="4" rowHeight="500" *ngIf="products$ | async as products; else loadingContainer">
-      <mat-grid-tile *ngFor="let product of products | productsFilter:searchText:onlyFavorites; let isOdd = odd">
-        <app-product-card [product]="product" [isOdd]="isOdd"></app-product-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <ng-template #loadingContainer>
-      <div class="loader-container">
-        <mat-spinner></mat-spinner>
-      </div>
-    </ng-template>
-  </ng-template>
-</app-sidenav>
-
-
-
-
-
-
-
-
-
+<router-outlet></router-outlet>
 <app-modal></app-modal>
+
