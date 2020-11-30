@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'app-one-product',
@@ -8,20 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OneProductComponent implements OnInit {
 
+  public product$ = this.activatedRoute.data.pipe(pluck('product'));
+
   constructor(
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((q)=>{
-      console.log(q);
-    })
-    this.activatedRoute.params.subscribe((params)=>{
-      console.log(params.id);
-    })
-    this.activatedRoute.paramMap.subscribe((paramMap)=>{
-      console.log(paramMap.get('id'));
-    })
+    console.log(this.activatedRoute.snapshot);
   }
 
 }

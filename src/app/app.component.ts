@@ -19,8 +19,9 @@ export class AppComponent implements OnInit {
       .pipe(
         // filter((event) => event instanceof NavigationStart && event.id === 1)
       )
-      .subscribe((event) => {
-        console.log(event);
+      // tslint:disable-next-line:variable-name
+      .subscribe((_event) => {
+        //console.log(event);
       });
   }
 }

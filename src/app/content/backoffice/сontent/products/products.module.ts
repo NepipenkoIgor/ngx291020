@@ -6,6 +6,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ProductsService } from './products.service';
 import { OneProductComponent } from './one-product/one-product.component';
+import { OneProductResolverService } from './one-product/one-product-resolver.service';
 
 
 @NgModule({
@@ -21,11 +22,14 @@ import { OneProductComponent } from './one-product/one-product.component';
       },
       {
         path: ':id',
-        component: OneProductComponent
+        component: OneProductComponent,
+        resolve: {
+          product: OneProductResolverService
+        }
       }
     ])
   ],
-  providers: [ProductsService]
+  providers: [ProductsService, OneProductResolverService]
 })
 export class ProductsModule {
 }

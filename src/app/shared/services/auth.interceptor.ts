@@ -14,9 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const newHeaders = req.headers.append('Content-Type', 'application/json')
-      .append('Authorization',
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImluZXBpcGVua28iLCJpYXQiOjE2MDA3MDg1MzJ9.Uch-jamBl7U9XF_m1riA9APROi_lO-mkDmnjjuv8Kv8');
+    const token = localStorage.getItem('accessToken') ?? '';
+    let newHeaders = req.headers.append('Content-Type', 'application/json');
+    if (token) {
+      newHeaders = newHeaders.append('Authorization', token);
+    }
+
+
     const jsonReq = req.clone({
       headers: newHeaders,
       url: `${this.baseUrl}${req.url}`
