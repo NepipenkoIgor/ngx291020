@@ -1,2 +1,60 @@
-<p>signup works!</p>
-<button mat-button (click)="goToLogin()">Go to Login</button>
+<div class="auth-content">
+  <mat-card *ngIf="signUpForm">
+    <mat-card-content>
+      <div [formGroup]="signUpForm">
+        <p>Sign Up to continue</p>
+        <!--        <div *ngFor="let kv of signUpForm.value | keyvalue">-->
+        <!--          {{kv.key}}-->
+        <!--          <mat-form-field>-->
+        <!--            <input matInput type="text"  [formControl]="getControl(kv.key)">-->
+        <!--          </mat-form-field>-->
+        <!--        </div>-->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Username" formControlName="username">
+          <ng-container *ngIf="signUpForm.get('username')?.errors?.username as usernameError">
+            <mat-error>{{usernameError}}</mat-error>
+          </ng-container>
+        </mat-form-field>
+
+
+        <div fxLayout="column">
+          <div fxLayout="row" fxFlex="90"
+               *ngFor="let control of getControls(signUpForm, 'emails') as controls; index as i; first as f">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Email" [formControl]="toControl(control)">
+            </mat-form-field>
+            <div fxFlex="10" fxLayout="row">
+               <mat-icon *ngIf="f" (click)="addEmail()">add</mat-icon>
+               <mat-icon *ngIf="controls.length > 1" (click)="removeEmail(i)">delete</mat-icon>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row">
+          <div>Male</div>
+          <app-switcher formControlName="male"></app-switcher>
+        </div>
+
+        <div formGroupName="password">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password"
+                   formControlName="password"
+                   required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password"
+                   formControlName="cpassword"
+                   required>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="signUpForm.invalid || signUpForm.pending "
+                (click)="signup(signUpForm.value)">Sign Up
+        </button>
+        <a mat-button [routerLink]="['/login']">Go to SignUp</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

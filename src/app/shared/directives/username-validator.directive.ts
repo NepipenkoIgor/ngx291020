@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 import { FormControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
+import { ValidationService } from '../services/validation.service';
 
 @Directive({
   selector: '[appUsernameValidator]',
@@ -14,12 +15,12 @@ import { FormControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angula
 export class UsernameValidatorDirective implements Validator {
 
 
+  public constructor(
+    private validationService: ValidationService
+  ) {
+  }
+
   public validate(control: FormControl): ValidationErrors | null {
-    const valid = /^[a-zA-Z]*$/.test(control.value);
-    return valid
-      ? null
-      : {
-        username: 'Should contains only letters '
-      };
+    return this.validationService.usernameSpecialSymbols(control);
   }
 }
