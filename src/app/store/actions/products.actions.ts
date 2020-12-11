@@ -5,8 +5,6 @@ export const getProductsSuccess =
   createAction('[Products module] set products from server', props<{products: any}>());
 export const getProductsError = createAction('[Products module] error when retry products from server  ');
 
-
-getProductsSuccess({products: []})
 /*
   {
     type: '[Products module] set products from server',

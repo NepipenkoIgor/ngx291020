@@ -4,6 +4,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../../../store';
+import { totalProducts } from '../../../store/selectors/cart.selector';
 
 // import { MatDrawer } from '@angular/material/sidenav';
 
@@ -26,7 +29,16 @@ export class HeaderComponent implements OnInit {
   public drawer!: MatDrawer;
   public title!: string;
 
+
+  public cartProductsCount$ = this.store.select(totalProducts);
+
+  constructor(
+    private store: Store<IRootState>
+  ) {
+  }
+
   public ngOnInit(): void {
+
   }
 
   toggleSideNav(): void {

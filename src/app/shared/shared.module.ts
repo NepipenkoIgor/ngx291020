@@ -20,6 +20,7 @@ import { PermissionGuard } from './services/permission.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameValidatorDirective } from './directives/username-validator.directive';
 import { ValidationService } from './services/validation.service';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ValidationService } from './services/validation.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    UsernameValidatorDirective
+    UsernameValidatorDirective,
+    MatBadgeModule
   ],
   providers: [ // for each module
     {

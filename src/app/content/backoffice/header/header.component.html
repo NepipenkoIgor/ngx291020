@@ -11,8 +11,13 @@
   </div>
   <div fxLayout="row">
     <app-exchange-rates></app-exchange-rates>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button
+            [routerLink]="['/backoffice/cart']"
+            class="example-icon" aria-label="Example icon-button with share icon"
+    >
+      <mat-icon [matBadge]="cartProductsCount$ | async" matBadgeColor="warn"
+      >shopping_cart
+      </mat-icon>
     </button>
   </div>
 </mat-toolbar>

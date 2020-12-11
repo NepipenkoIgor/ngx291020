@@ -1,17 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProduct, ProductsService } from '../products.service';
 import { ModalService } from '../../../../../modal/modal.service';
+import { IProduct } from '../../../../../store/reducers/products.reducer';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../../../../../store';
+import { addProductToCart } from '../../../../../store/actions/cart.actions';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
-  providers: [
-    {
-      provide: ProductsService,
-      useClass: ProductsService
-    }
-  ]
 })
 export class ProductCardComponent implements OnInit {
 
@@ -22,7 +19,8 @@ export class ProductCardComponent implements OnInit {
   public isOdd!: boolean;
 
   constructor(
-    private readonly modalService: ModalService
+    private readonly modalService: ModalService,
+    private readonly store: Store<IRootState>,
   ) {
   }
 
@@ -37,7 +35,7 @@ export class ProductCardComponent implements OnInit {
       context: {
         product: {...this.product},
         save: () => {
-          // add to cart
+          this.store.dispatch(addProductToCart({product: this.product}));
           this.modalService.close();
         },
         close: () => {

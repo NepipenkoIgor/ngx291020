@@ -4,7 +4,6 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsFilterPipe } from './products-filter.pipe';
 import { SharedModule } from '../../../../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { ProductsService } from './products.service';
 import { OneProductComponent } from './one-product/one-product.component';
 import { OneProductResolverService } from './one-product/one-product-resolver.service';
 
@@ -29,7 +28,7 @@ import { OneProductResolverService } from './one-product/one-product-resolver.se
       }
     ])
   ],
-  providers: [ProductsService, OneProductResolverService]
+  providers: [ OneProductResolverService]
 })
 export class ProductsModule {
 }

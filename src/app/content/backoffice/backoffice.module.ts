@@ -25,6 +25,10 @@ import { HiddenDirective } from './header/exchange-rates/hidden.directive';
         component: BackofficeComponent,
         children: [
           {
+            path: 'cart',
+            loadChildren: () => import('./content/cart/cart.module').then((m) => m.CartModule)
+          },
+          {
             path: '',
             data: {
                breadcrumbs: {
@@ -32,8 +36,8 @@ import { HiddenDirective } from './header/exchange-rates/hidden.directive';
                  title: 'Products page'
                }
             },
-            loadChildren: () => import('./сontent/products/products.module').then((m) => m.ProductsModule)
-          }
+            loadChildren: () => import('./content/products/products.module').then((m) => m.ProductsModule)
+          },
         ]
       }
     ])
